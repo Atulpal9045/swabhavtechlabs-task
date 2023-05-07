@@ -6,6 +6,22 @@ function Test() {
   console.log(
     result === expected ? "Test Case 1 Passed" : "Test Case 1 Failed"
   );
+
+  // single value string
+  const numbers1 = "1";
+  const expected1 = 1;
+  const result1 = Add(numbers1);
+  console.log(
+    result1 === expected1 ? "Test Case 2 Passed" : "Test Case 2 Failed"
+  );
+
+  // Separated by commas
+  const numbers2 = "1,2";
+  const expected2 = 3;
+  const result2 = Add(numbers2);
+  console.log(
+    result2 === expected2 ? "Test Case 3 Passed" : "Test Case 3 Failed"
+  );
 }
 
 // Function implementation
@@ -21,7 +37,7 @@ function Add(numbers) {
     const number = parseInt(num);
     sum += number;
   }
-  
+
   return sum;
 }
 
