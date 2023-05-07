@@ -46,6 +46,14 @@ function Test() {
   console.log(
     result5 === expected5 ? "Test Case 6 Passed" : "Test Case 6 Failed"
   );
+
+  // Support different delimiters
+  const numbers6 = "//;\n1;2";
+  const expected6 = 3;
+  const result6 = Add(numbers6);
+  console.log(
+    result6 === expected6 ? "Test Case 7 Passed" : "Test Case 7 Failed"
+  );
 }
 
 // Function implementation
@@ -53,6 +61,13 @@ function Add(numbers) {
   if (numbers === "") return 0;
 
   let delimiters = [",", "\n"];
+
+  if (numbers.startsWith("//")) {
+    const delimiterIndex = numbers.indexOf("\n");
+    const delimiterSection = numbers.substring(2, delimiterIndex);
+    delimiters = [delimiterSection];
+    numbers = numbers.substring(delimiterIndex + 1);
+  }
 
   const numberArray = numbers.split(new RegExp(delimiters.join("|")));
   let sum = 0;
