@@ -54,6 +54,14 @@ function Test() {
   console.log(
     result6 === expected6 ? "Test Case 7 Passed" : "Test Case 7 Failed"
   );
+
+  // negatives not allowed
+  const numbers7 = "-10,12,1";
+  const expected7 = "Negatives not allowed";
+  const result7 = Add(numbers7);
+  console.log(
+    result7 === expected7 ? "Test Case 8 Passed" : "Test Case 8 Failed"
+  );
 }
 
 // Function implementation
@@ -72,6 +80,7 @@ function Add(numbers) {
   const numberArray = numbers.split(new RegExp(delimiters.join("|")));
   let sum = 0;
   let negativeNumbers = [];
+
   for (const num of numberArray) {
     if (num == "") return "Input is NOT ok";
     const number = parseInt(num);
