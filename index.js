@@ -71,13 +71,19 @@ function Add(numbers) {
 
   const numberArray = numbers.split(new RegExp(delimiters.join("|")));
   let sum = 0;
-
+  let negativeNumbers = [];
   for (const num of numberArray) {
     if (num == "") return "Input is NOT ok";
     const number = parseInt(num);
-    sum += number;
+    if (number < 0) {
+      negativeNumbers.push(number);
+    } else {
+      sum += number;
+    }
   }
-
+  if (negativeNumbers.length > 0) {
+    return "Negatives not allowed";
+  }
   return sum;
 }
 
